@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Sistema de Roles{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav>
+        <span>Sistema de Roles</span>
+        {% if user %}
+            <a href="{{ url_for('logout') }}">Cerrar sesión ({{ user.get_name() }})</a>
+        {% endif %}
+    </nav>
+    {% block content %}{% endblock %}
+</body>
+</html>

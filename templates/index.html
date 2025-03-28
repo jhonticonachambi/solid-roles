@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="user-card">
+    <h2>{{ user.get_name() }}</h2>
+    <p>Email: {{ user.email }}</p>
+    <p>Rol: {{ user.__class__.__name__ }}</p>
+    
+    <div class="actions">
+        <p>{{ user.read_content() }}</p>
+        
+        {% if user.__class__.__name__ in ['Editor', 'Admin'] %}
+            <p>{{ user.edit_content() }}</p>
+        {% endif %}
+        
+        {% if user.__class__.__name__ == 'Admin' %}
+            <p>{{ user.delete_content() }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
